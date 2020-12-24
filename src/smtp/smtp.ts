@@ -13,7 +13,7 @@ export const checkSMTP = async (
   recipient: string,
   exchange: string
 ): Promise<OutputFormat> => {
-  const timeout = 1000 * 10 // 10 seconds
+  const timeout = 1000 * 5 // 5 seconds
   return new Promise(r => {
     let receivedData: boolean = false;
     const socket = net.createConnection(25, exchange)
@@ -31,7 +31,8 @@ export const checkSMTP = async (
     socket.on('fail', msg => {
       r(createOutput('smtp', msg))
       if (socket.writable && !socket.destroyed) {
-        socket.write(`quit\r\n`)
+        // Disabled to avoid errors
+        // socket.write(`quit\r\n`)
         socket.end()
         socket.destroy()
       }

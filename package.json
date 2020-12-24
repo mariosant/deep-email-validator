@@ -1,5 +1,5 @@
 {
-  "name": "deep-email-validator",
+  "name": "@mariosant/deep-email-validator",
   "version": "0.1.18",
   "files": [
     "dist/**/*"
